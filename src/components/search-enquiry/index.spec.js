@@ -1,8 +1,7 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import SearchEnquiry from './index';
-import fetch from 'whatwg-fetch';
 import sinon from 'sinon';
 import AutoSuggestion from '../autosuggestion/index';
 

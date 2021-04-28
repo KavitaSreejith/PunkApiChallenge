@@ -3,8 +3,8 @@ import AutoSuggestion from "../autosuggestion/index";
 import SearchResult from "../search-results/index";
 var _ = require('lodash');
 import '../../styles/styles.less';
-import config from "../configs/api.config";
-import label from "../configs/label.config";
+import config from "../configs/api.config.js";
+import label from "../configs/label.config.js";
 
 class SearchEnquiry extends Component {
 

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 var _ = require('lodash');
 import '../../styles/styles.less';
-import config from "../configs/api.config";
-import label from "../configs/label.config";
+import config from "../configs/api.config.js";
+import label from "../configs/label.config.js";
 
 class RandomSearch extends Component {
 

@@ -4,7 +4,6 @@ class SearchResult extends Component {
     render() {
         return (
            <div className="search-results">
-              {/* <ul> */}
                 {
                     this.props.selectedBeer.map((item, key) => {
                         return (
@@ -19,7 +18,6 @@ class SearchResult extends Component {
                         </div>)
                     })
                 }
-            {/* </ul> */}
           </div>
         );
     }

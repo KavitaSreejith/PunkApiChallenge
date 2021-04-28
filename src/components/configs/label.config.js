@@ -1,4 +1,4 @@
-export default{
+const label = {
     "appHeader" : "Punk Beer Factory",
     "contributedBy" : "Contributed By :",
     "brewerTips" : "Brewer Tips",
@@ -13,3 +13,4 @@ export default{
     "byDesc" : "By Description",
     "standardBeerImage": "https://www.svgrepo.com/show/118352/beer-bottle.svg"
 } 
+export default label
