@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from 'axios';
 var _ = require('lodash');
 import '../../styles/styles.less';
 import config from "../configs/api.config";
@@ -15,7 +14,7 @@ class RandomSearch extends Component {
                      };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         fetch(config.getRandomBeerAPI)
             .then(response => response.json())
             .then(randomBeer => this.setState({ randomBeer }))
