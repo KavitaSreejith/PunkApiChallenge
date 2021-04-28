@@ -3,8 +3,8 @@ import AutoSuggestion from "../autosuggestion/index";
 import SearchResult from "../search-results/index";
 var _ = require('lodash');
 import '../../styles/styles.less';
-import config from "../configs/api.config.js";
-import label from "../configs/label.config.js";
+import config from "../configs/api.config";
+import label from "../configs/label.config";
 
 class SearchEnquiry extends Component {
 
@@ -20,7 +20,7 @@ class SearchEnquiry extends Component {
                        selectedBeerWithDesc :[]            
                      };
     }
-
+    
     componentDidMount() {
         fetch(config.getAllBeersAPI)
             .then(response => response.json())
@@ -50,7 +50,7 @@ class SearchEnquiry extends Component {
             () => {}
         )
     }
-
+    
     // Set the Current Selected Beer..
     setBeer(currentBeerName){
         this.setState(
@@ -67,6 +67,7 @@ class SearchEnquiry extends Component {
     // 
     getResult(){
         const beerName = (document.getElementById("autocomplete-text").value).split(' ').join('_') ;
+        const { allBeersWithName } = this.state;
         fetch(config.getAllBeersNameAPI+beerName)
             .then(response => response.json())
             .then(allBeersWithName => this.setState({ allBeersWithName },
@@ -89,14 +90,14 @@ class SearchEnquiry extends Component {
            <div className="search-enquiry">
                 <div className="search-enquiry__header"> {label.searchHeader} </div>
                 <div className="search-enquiry__controls">
-                    <input type="radio" name="name" value="name" onChange={ () => this.categorizeByName() } id="name"/> <label className="name-label" htmlFor="name">By Name</label>
-                    <input type="radio" name="name" value="description" onChange={ () => this.categorizeByDesc() } id="desc"/> <label htmlFor="desc">By Description</label>
+                    <input type="radio" name="name" value="name" onChange={ () => this.categorizeByName() } id="name"/> <label className="name-label" htmlFor="name">{label.byName}</label>
+                    <input type="radio" name="name" value="description" onChange={ () => this.categorizeByDesc() } id="desc"/> <label htmlFor="desc">{label.byDesc}</label>
                     <span className="action">
                         <button onClick={ () => this.clearField() } className="clear-input">
-                        {label.clearField}
+                            {label.clearField}
                         </button>  
                         <button id="getResult" onClick={ () => this.getResult() } className="search">
-                        {label.searchResult}
+                            {label.searchResult}
                         </button>
                     </span>
                 </div>
@@ -105,7 +106,7 @@ class SearchEnquiry extends Component {
                         suggestions={(isNameOrDesc=='name') ? nameList : descList}
                     />
                 </div>
-
+                  
                 {(selectedBeerWithName || selectedBeerWithDesc) ? (<SearchResult selectedBeer={ (isNameOrDesc=='name') ? selectedBeerWithName : selectedBeerWithDesc} />) : ''}
           </div>
         );
@@ -113,4 +114,5 @@ class SearchEnquiry extends Component {
 }
 
 export default SearchEnquiry;
+
 

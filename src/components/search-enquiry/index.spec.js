@@ -1,7 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import SearchEnquiry from './index';
+import fetch from 'whatwg-fetch';
 import sinon from 'sinon';
 import AutoSuggestion from '../autosuggestion/index';
 
@@ -12,7 +13,7 @@ xdescribe('Random Search Container', () => {
     beforeEach( () => {
         wrapper = shallow(<SearchEnquiry getResult={getResult} />);
     })
-
+    
     afterEach(() => {
         wrapper.unmount();
     })
@@ -32,5 +33,7 @@ xdescribe('Random Search Container', () => {
         expect(getResult.called).toBe(true);
         getResult.restore();  
     });
+
 });
+
 

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 var _ = require('lodash');
 import '../../styles/styles.less';
-import config from "../configs/api.config.js";
-import label from "../configs/label.config.js";
+import config from "../configs/api.config";
+import label from "../configs/label.config";
 
 class RandomSearch extends Component {
 
@@ -10,11 +10,11 @@ class RandomSearch extends Component {
         super(props);
         this.getRandomNonAlcoholicBeer = this.getRandomNonAlcoholicBeer.bind(this)
         this.state = { randomBeer: [] ,
-                       allBeers: []                       
+                       allBeers: [], 
                      };
     }
-
-    async componentDidMount() {
+    
+    componentDidMount() {
         fetch(config.getRandomBeerAPI)
             .then(response => response.json())
             .then(randomBeer => this.setState({ randomBeer }))
@@ -42,12 +42,12 @@ class RandomSearch extends Component {
 
     //Get Non Alcoholic beer based on abv value..
     getRandomNonAlcoholicBeer(){
-        fetch((config.getAllBeersAPI)
+        fetch(config.getAllBeersAPI)
             .then(response => response.json())
             .then(allBeers => this.setState( { allBeers }, () => {
                                 const isNonAlcohol = true;
                                 this.setBeer(this.state.allBeers, isNonAlcohol);
-                              })));                
+                              }));                
     }
 
     render() {
@@ -60,18 +60,18 @@ class RandomSearch extends Component {
                     <div className="random-beer__header"> 
                          <span className="name"> {currentBeer.name} - &nbsp; </span>
                          <span className="tagline"> <i>" {(currentBeer.tagline).split(".")[0]} "</i></span>
-                         <span className="contribution"> <i>{label.contributedBy} :&nbsp;</i> {(currentBeer.contributed_by).split("<")[0]}</span>
+                         <span className="contribution"> <i>{label.contributedBy}&nbsp;</i> {(currentBeer.contributed_by).split("<")[0]}</span>
                     </div>
                     <div className="random-beer__content">
                         <div className="image">
-                            <img src={currentBeer.image_url || label.standardBeerImage} alt="Smiley face" height="250" width="70" />
+                            <img src={currentBeer.image_url||label.standardBeerImage} alt="Smiley face" height="250" width="70" />
                         </div>
                         <div className="random-beer__content-details">
                             <div className="description">
                                 {currentBeer.description}
                             </div>
                             <div className="brewer-label">
-                            {label.brewerTips}
+                               {label.brewerTips}
                             </div>
                             <div className="brewer-tips">
                                 {currentBeer.brewers_tips}
@@ -87,7 +87,7 @@ class RandomSearch extends Component {
                         </div>
                         <div className="random-beer__content-origin">
                             <div className="content">
-
+                                
                                 <div className="date-container"> 
                                 <div className="label"> {label.firstBrewed} </div>
                                     <div className="date">{currentBeer.first_brewed}</div>
@@ -100,8 +100,8 @@ class RandomSearch extends Component {
                 )}
 
 
-
-
+                
+        
           </div>
         );
     }

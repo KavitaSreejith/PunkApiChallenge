@@ -28,8 +28,9 @@ I was very methodical with the planning for this project. Here is an outline, in
 
 ### Technologies Used
 
-- HTML/CSS
+- HTML/LESS
 - Javascript
 - React
+- Webpack - Module Bundler
 - Bable
 - Jest

@@ -9,7 +9,7 @@ class SearchResult extends Component {
                         return (
                         <div key={key} className="search-results__content">
                                 <div className="image">
-                                    <img src={item.image_url} alt="Smiley face" height="100" width="35" />
+                                    <img src={item.image_url||standardBeerImage} alt="Smiley face" height="100" width="35" />
                                 </div>
                                 <div className="detail">
                                     <div className="name">{item.name}</div>

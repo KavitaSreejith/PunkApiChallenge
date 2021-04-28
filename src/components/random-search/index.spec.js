@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import fetch from 'whatwg-fetch';
 import sinon from 'sinon';
 import RandomSearch from './index';
 
@@ -13,7 +12,7 @@ xdescribe('Random Search Container', () => {
     beforeEach( () => {
         wrapper = shallow(<RandomSearch getRandomBeer={getRandomBeer} getRandomNonAlcoholicBeer={getRandomNonAlcoholicBeer} />);
     })
-
+    
     afterEach(() => {
         wrapper.unmount();
     })
