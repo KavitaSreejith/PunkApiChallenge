@@ -6,6 +6,8 @@ Engineered using React! This client is meant to help you broaden your knowledge 
 
 [Punk API](https://punkapi.com/)
 
+[Project Deployed on Netlify](https://pensive-pare-304a8f.netlify.app)
+
 ## Planning Story
 
 I was very methodical with the planning for this project. Here is an outline, in chronological order of the steps taken to build this app:
