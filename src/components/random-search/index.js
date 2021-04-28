@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from 'axios';
 var _ = require('lodash');
 import '../../styles/styles.less';
+import config from "../configs/api.config";
+import label from "../configs/label.config";
 
 class RandomSearch extends Component {
 
@@ -9,21 +11,19 @@ class RandomSearch extends Component {
         super(props);
         this.getRandomNonAlcoholicBeer = this.getRandomNonAlcoholicBeer.bind(this)
         this.state = { randomBeer: [] ,
-                       allBeers: [], 
-                       getRandomBeerAPI : 'https://api.punkapi.com/v2/beers/random',
-                       getAllBeers : 'https://api.punkapi.com/v2/beers',                       
+                       allBeers: []                       
                      };
     }
 
     componentDidMount() {
-        fetch(this.state.getRandomBeerAPI)
+        fetch(config.getRandomBeerAPI)
             .then(response => response.json())
             .then(randomBeer => this.setState({ randomBeer }))
     }
 
     // Get Random beer...
     getRandomBeer(){
-        fetch(this.state.getRandomBeerAPI)
+        fetch(config.getRandomBeerAPI)
                 .then(response => response.json())
                 .then(randomBeer => this.setState( { randomBeer }, () => {
                     const isNonAlcohol = false;
@@ -43,12 +43,12 @@ class RandomSearch extends Component {
 
     //Get Non Alcoholic beer based on abv value..
     getRandomNonAlcoholicBeer(){
-        fetch(this.state.getAllBeers)
+        fetch((config.getAllBeersAPI)
             .then(response => response.json())
             .then(allBeers => this.setState( { allBeers }, () => {
                                 const isNonAlcohol = true;
                                 this.setBeer(this.state.allBeers, isNonAlcohol);
-                              }));                
+                              })));                
     }
 
     render() {
@@ -61,28 +61,28 @@ class RandomSearch extends Component {
                     <div className="random-beer__header"> 
                          <span className="name"> {currentBeer.name} - &nbsp; </span>
                          <span className="tagline"> <i>" {(currentBeer.tagline).split(".")[0]} "</i></span>
-                         <span className="contribution"> <i>Contributed By :&nbsp;</i> {(currentBeer.contributed_by).split("<")[0]}</span>
+                         <span className="contribution"> <i>{label.contributedBy} :&nbsp;</i> {(currentBeer.contributed_by).split("<")[0]}</span>
                     </div>
                     <div className="random-beer__content">
                         <div className="image">
-                            <img src={currentBeer.image_url || "https://www.svgrepo.com/show/118352/beer-bottle.svg"} alt="Smiley face" height="250" width="70" />
+                            <img src={currentBeer.image_url || label.standardBeerImage} alt="Smiley face" height="250" width="70" />
                         </div>
                         <div className="random-beer__content-details">
                             <div className="description">
                                 {currentBeer.description}
                             </div>
                             <div className="brewer-label">
-                                Brewer Tips
+                            {label.brewerTips}
                             </div>
                             <div className="brewer-tips">
                                 {currentBeer.brewers_tips}
                             </div>
                             <div className="action-controls">
                                 <button id="getAnotherBeer" onClick={ () => this.getRandomBeer() }>
-                                Another Beer
+                                {label.anotherBeer}
                                 </button>
                                 <button id="getNonAlcohol" onClick={ () => this.getRandomNonAlcoholicBeer() }>
-                                Random Non Alcoholic Beer
+                                {label.randomNonAlcholicBeer}
                                 </button>
                             </div>
                         </div>
@@ -90,9 +90,9 @@ class RandomSearch extends Component {
                             <div className="content">
 
                                 <div className="date-container"> 
-                                <div className="label"> First Brewed </div>
+                                <div className="label"> {label.firstBrewed} </div>
                                     <div className="date">{currentBeer.first_brewed}</div>
-                                    <div className="ph">pH&nbsp;{currentBeer.ph}</div>
+                                    <div className="ph">{label.ph}&nbsp;{currentBeer.ph}</div>
                                 </div>
                             </div>
                         </div>    

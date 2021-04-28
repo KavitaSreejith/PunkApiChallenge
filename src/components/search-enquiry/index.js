@@ -4,6 +4,8 @@ import AutoSuggestion from "../autosuggestion/index";
 import SearchResult from "../search-results/index";
 var _ = require('lodash');
 import '../../styles/styles.less';
+import config from "../configs/api.config";
+import label from "../configs/label.config";
 
 class SearchEnquiry extends Component {
 
@@ -12,7 +14,6 @@ class SearchEnquiry extends Component {
         this.state = { randomBeer: [] ,
                        allBeers: [], 
                        allBeersWithName: [],
-                       getAllBeers : 'https://api.punkapi.com/v2/beers',
                        isNameOrDesc: '',
                        nameList:[],
                        descList:[],
@@ -22,7 +23,7 @@ class SearchEnquiry extends Component {
     }
 
     componentDidMount() {
-        fetch(this.state.getAllBeers)
+        fetch(config.getAllBeersAPI)
             .then(response => response.json())
             .then(allBeers => this.setState({ allBeers },
                 () => {}
@@ -88,16 +89,16 @@ class SearchEnquiry extends Component {
         const { nameList, descList, isNameOrDesc, selectedBeerWithName, selectedBeerWithDesc } = this.state;
         return (
            <div className="search-enquiry">
-                <div className="search-enquiry__header"> Search for your favourite beer </div>
+                <div className="search-enquiry__header"> {label.searchHeader} </div>
                 <div className="search-enquiry__controls">
                     <input type="radio" name="name" value="name" onChange={ () => this.categorizeByName() } id="name"/> <label className="name-label" htmlFor="name">By Name</label>
                     <input type="radio" name="name" value="description" onChange={ () => this.categorizeByDesc() } id="desc"/> <label htmlFor="desc">By Description</label>
                     <span className="action">
                         <button onClick={ () => this.clearField() } className="clear-input">
-                            Clear Input
+                        {label.clearField}
                         </button>  
                         <button id="getResult" onClick={ () => this.getResult() } className="search">
-                            Search Result
+                        {label.searchResult}
                         </button>
                     </span>
                 </div>
