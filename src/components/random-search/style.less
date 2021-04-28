@@ -1,0 +1,120 @@
+.random-beer {
+  padding: 20px;
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(173, 166, 173, 1);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(173, 166, 173, 1);
+  box-shadow: 2px 3px 5px 0px rgba(173, 166, 173, 1);
+  border: 1px solid #f3f3f3;
+  border-radius: 2px;
+  &__header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px dashed #d4d4d4;
+    padding: 7px 0px;
+    margin-bottom: 25px;
+    .name {
+      display: inline-block;
+      font-size: 22px;
+      color: #4bc3a8;
+      font-weight: 700;
+      text-transform: capitalize;
+      align-self: auto;
+      letter-spacing: 1px;
+    }
+    .tagline {
+      font-size: 20px;
+      align-self: auto;
+      color: @punk-black;
+    }
+    .contribution {
+      display: inline-block;
+      text-align: right;
+      align-self: flex-end;
+      flex: auto;
+      font-size: 18px;
+      font-weight: 500;
+      i {
+        font-style: normal;
+        color: @punk-grey;
+      }
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .image {
+      width: 11%;
+      flex-grow: 1;
+    }
+    &-details {
+      width: 60%;
+      padding: 0px 40px 0px 5px;
+      position: relative;
+      .description {
+        font-size: 15px;
+        letter-spacing: 1px;
+        text-align: justify;
+        margin-bottom: 20px;
+        color: @punk-black;
+      }
+      .brewer-label {
+        color: #000;
+        margin-bottom: 5px;
+        font-size: 17px;
+        font-weight: 600;
+      }
+      .brewer-tips {
+        color: @punk-black;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .action-controls {
+        position: absolute;
+        bottom: 0px;
+        button {
+          .punk-button();
+        }
+      }
+    }
+    &-origin {
+      width: 25%;
+      flex-grow: 1;
+      position: relative;
+      .content {
+        right: 0px;
+        position: absolute;
+        width: 70%;
+        .date-container {
+          background: @punk-yellow;
+          height: auto;
+          padding: 15px;
+          .label {
+            text-align: right;
+            font-size: 14px;
+            color: @punk-black;
+            margin-bottom: 5px;
+            padding: 10px 10px 0px 10px;
+            color: #000;
+            font-weight: 700;
+          }
+          .date {
+            text-align: right;
+            padding: 0px 10px;
+            font-size: 30px;
+            font-weight: 400;
+
+            margin-bottom: 10px;
+          }
+          .ph {
+            text-align: right;
+            font-size: 30px;
+            color: @punk-green;
+            padding: 0px 10px;
+            border-top: 1px dashed @punk-green;
+          }
+        }
+      }
+    }
+  }
+}

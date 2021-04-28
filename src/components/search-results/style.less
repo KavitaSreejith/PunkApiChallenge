@@ -1,0 +1,33 @@
+.search-results {
+  width: 100%;
+  margin-top: 10px;
+  &__content {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #d4d4d4;
+    padding: 20px;
+    &:last-child {
+      border-bottom: none;
+    }
+    .image {
+      display: inline-block;
+      width: 10%;
+      text-align: center;
+    }
+    .detail {
+      width: 90%;
+      display: inline-block;
+      .name {
+        margin-bottom: 20px;
+        color: @punk-green;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: underline;
+      }
+      .desc {
+        color: @punk-black;
+      }
+    }
+  }
+}
